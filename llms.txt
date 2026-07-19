@@ -21,4 +21,5 @@ Small and mid-sized law firms, primarily in New Jersey and New York, that must m
 
 - Website: https://watusoft.com
 - Email: info@watusoft.com
+- LinkedIn: https://www.linkedin.com/company/watusoft-cybersecurity-advisory/
 - First step: a free 15-minute call reviewing the firm's current setup and highest-risk gaps.
