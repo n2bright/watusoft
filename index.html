@@ -193,6 +193,34 @@ nav {
 .stat-num{font-family:var(--serif);font-size:2.2rem;font-weight:700;color:var(--gold);line-height:1}
 .stat-label{font-size:.75rem;color:var(--muted);margin-top:.4rem;text-transform:uppercase;letter-spacing:.1em}
 
+/* ── HERO VISUAL ── */
+.hero-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:5rem;align-items:center;position:relative;width:100%}
+.hero-layout .hero-h1{font-size:clamp(2.6rem,4.6vw,4.3rem)}
+.hero-visual{position:relative;opacity:0;animation:fadeUp 1s var(--ease) .7s forwards}
+.hero-w{position:absolute;top:50%;left:50%;transform:translate(-46%,-56%);width:min(34vw,520px);height:auto;pointer-events:none;z-index:0}
+.hero-w text{font-family:var(--serif);font-style:italic;font-size:360px;fill:rgba(201,168,76,0);stroke:var(--gold);stroke-width:1;opacity:.5;stroke-dasharray:2600;stroke-dashoffset:2600;animation:wDraw 40s linear .9s forwards,wFill 3.2s var(--ease) 1.2s forwards}
+@keyframes wDraw{to{stroke-dashoffset:0}}
+@keyframes wFill{to{fill:rgba(201,168,76,.05)}}
+.hv-panel{position:relative;z-index:1;background:rgba(19,22,30,.88);backdrop-filter:blur(6px);border:1px solid var(--edge);border-top:2px solid var(--gold);padding:1.6rem 1.7rem;box-shadow:0 40px 80px rgba(0,0,0,.45)}
+.hv-head{display:flex;align-items:center;gap:.6rem;font-size:.64rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding-bottom:1.1rem;border-bottom:1px solid var(--edge)}
+.hv-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s ease infinite;flex-shrink:0}
+.hv-head-meta{margin-left:auto;color:var(--muted);letter-spacing:.16em}
+.hv-row{display:flex;align-items:baseline;gap:1rem;padding:.85rem 0;border-bottom:1px solid rgba(34,37,53,.6);opacity:0;animation:fadeUp .55s var(--ease) var(--d) forwards}
+.hv-name{font-size:.82rem;font-weight:500;color:var(--white)}
+.hv-meta{margin-left:auto;font-size:.72rem;color:var(--muted);font-weight:300;text-align:right}
+.hv-chip{font-size:.6rem;font-weight:700;letter-spacing:.12em;padding:.18rem .5rem;border-radius:1px;border:1px solid;flex-shrink:0}
+.hv-chip.fail{color:#D08585;border-color:rgba(139,32,32,.55);background:rgba(139,32,32,.12)}
+.hv-chip.risk{color:var(--goldhi);border-color:rgba(201,168,76,.4);background:rgba(201,168,76,.08)}
+.hv-chip.pass{color:#8FC4A0;border-color:rgba(45,107,69,.55);background:rgba(45,107,69,.14)}
+.hv-foot{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-top:1.1rem;font-size:.72rem;color:var(--off);font-weight:300;opacity:0;animation:fadeUp .55s var(--ease) 2.45s forwards}
+.hv-foot strong{color:var(--white);font-weight:600}
+.hv-foot-cta{color:var(--gold);letter-spacing:.08em;text-transform:uppercase;font-size:.66rem;font-weight:600;white-space:nowrap}
+@media (prefers-reduced-motion:reduce){
+  .hero-visual,.hv-row,.hv-foot{animation:none;opacity:1}
+  .hero-w text{animation:none;stroke-dashoffset:0;fill:rgba(201,168,76,.05)}
+  .hv-dot{animation:none}
+}
+
 /* ── SECTION COMMONS ── */
 section{position:relative;padding:7rem 5vw}
 .section-eyebrow {
@@ -468,6 +496,10 @@ footer{
 
 @media(max-width:900px){
   .problem-grid,.services-grid,.process-grid,.why-layout,.contact-layout,.services-intro,.lm-layout,.aig-layout{grid-template-columns:1fr}
+  .hero-layout{grid-template-columns:1fr;gap:3.5rem}
+  .hero-layout .hero-h1{font-size:clamp(2.4rem,9vw,3.4rem)}
+  .hero-visual{max-width:480px}
+  .hero-w{display:none}
   .prob-card{border-right:none}
   .process-grid::before{display:none}
   .retainer-banner{flex-direction:column;text-align:center}
@@ -649,6 +681,8 @@ footer{
   <div class="grid-bg"></div>
   <div class="hero-glow"></div>
 
+  <div class="hero-layout">
+  <div class="hero-copy">
   <div class="hero-line-top">
     <div class="hero-badge">
       <span>Now Accepting Clients — NJ &amp; NY Law Firms</span>
@@ -684,6 +718,23 @@ footer{
       <div class="stat-label">Starting Investment</div>
     </div>
   </div>
+  </div><!-- /hero-copy -->
+
+  <div class="hero-visual" aria-hidden="true">
+    <svg class="hero-w" viewBox="0 0 420 420">
+      <text x="210" y="315" text-anchor="middle">W</text>
+    </svg>
+    <div class="hv-panel">
+      <div class="hv-head"><span class="hv-dot"></span>M365 Tenant Assessment<span class="hv-head-meta">Sample</span></div>
+      <div class="hv-row" style="--d:1.05s"><span class="hv-name">Multi-factor authentication</span><span class="hv-meta">9 of 24 accounts</span><span class="hv-chip fail">Fail</span></div>
+      <div class="hv-row" style="--d:1.3s"><span class="hv-name">Email authentication — DMARC</span><span class="hv-meta">not enforced</span><span class="hv-chip fail">Fail</span></div>
+      <div class="hv-row" style="--d:1.55s"><span class="hv-name">External file sharing</span><span class="hv-meta">"Anyone with the link"</span><span class="hv-chip risk">Risk</span></div>
+      <div class="hv-row" style="--d:1.8s"><span class="hv-name">Admin conditional access</span><span class="hv-meta">not configured</span><span class="hv-chip risk">Risk</span></div>
+      <div class="hv-row" style="--d:2.05s"><span class="hv-name">Mailbox audit logging</span><span class="hv-meta">enabled</span><span class="hv-chip pass">Pass</span></div>
+      <div class="hv-foot"><span><strong>14 findings</strong> · typical firm profile</span><span class="hv-foot-cta">Remediated in 7 days</span></div>
+    </div>
+  </div>
+  </div><!-- /hero-layout -->
 </section>
 
 <!-- PROBLEM -->
