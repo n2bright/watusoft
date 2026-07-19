@@ -1,0 +1,24 @@
+# Watusoft Solutions
+
+> Cybersecurity and AI governance advisory for small and mid-sized law firms in New Jersey and New York. Flat-fee Microsoft 365 security assessments, hardening, and AI acceptable-use programs aligned to ABA Model Rule 1.6, ABA Formal Opinion 512, and cyber insurance requirements.
+
+Watusoft Solutions LLC is registered in New Jersey. Engagements use read-only delegated access for assessment work — no shared admin passwords — and every engagement produces a written report, documented Secure Score improvement, and a remediation roadmap suitable for cyber insurers or bar counsel.
+
+## Services
+
+- M365 Security Audit — $2,500 flat, 5 days. Secure Score baseline, MFA and admin privilege audit, email authentication (SPF/DKIM/DMARC) review, external sharing review, written findings report with risk ratings.
+- Audit + Hardening — $4,500 flat, 7 days. Everything in the audit plus active remediation: conditional access configuration, Defender for Endpoint review, implementation of top critical fixes, documented Secure Score improvement.
+- Compliance Package — $7,500 flat, 10 days. Everything in hardening plus vulnerability scanning, custom security policy documents, acceptable use and incident response plans, and a cyber insurance posture letter.
+- AI Governance Readiness — $4,500 flat, 7 days. Firm-wide AI tool inventory (approved, unapproved, and shadow use), vendor risk review of data handling, a generative AI acceptable-use policy tailored to the firm's practice areas, confidentiality mapping to ABA Model Rules 1.1, 1.6, and 5.3, staff briefing, and a 30-day check-in.
+- Monthly Security Retainer — $1,200–$2,500 per month. Ongoing Secure Score review, patch monitoring, quarterly mini-assessments, incident response SLA.
+- Bundle — Audit + Hardening plus AI Governance Readiness: $6,500 (vs. $9,000 separately).
+
+## Who it serves
+
+Small and mid-sized law firms, primarily in New Jersey and New York, that must meet ABA Model Rule 1.6 confidentiality obligations and cyber insurance security requirements without in-house security staff.
+
+## Contact
+
+- Website: https://watusoft.com
+- Email: info@watusoft.com
+- First step: a free 15-minute call reviewing the firm's current setup and highest-risk gaps.
