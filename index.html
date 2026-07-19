@@ -941,7 +941,7 @@ footer{
         <input type="hidden" name="form_type" value="M365 Checklist Lead Magnet"/>
         <button type="submit" class="lm-form-submit" id="checklist-submit">Send Me the Checklist</button>
       </form>
-      <div class="lm-form-note">PDF sent to your inbox immediately. No spam, no list-sharing, no marketing emails — just the checklist.</div>
+      <div class="lm-form-note" id="checklist-form-note">PDF sent to your inbox immediately. No spam, no list-sharing, no marketing emails — just the checklist.</div>
     </div>
   </div>
 </section>
@@ -1152,6 +1152,7 @@ footer{
           Request Consultation
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
+        <div class="form-sub" id="consultation-form-note" aria-live="polite"></div>
       </form>
     </div>
   </div>
@@ -1204,12 +1205,16 @@ window.addEventListener('scroll', () => {
 // ============================================
 const checklistForm = document.getElementById('checklist-form');
 const checklistBtn = document.getElementById('checklist-submit');
+const checklistNote = document.getElementById('checklist-form-note');
 
 checklistForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const formData = new FormData(checklistForm);
   checklistBtn.textContent = 'Sending...';
   checklistBtn.disabled = true;
+  if (checklistNote) {
+    checklistNote.textContent = 'Submitting your request...';
+  }
 
   try {
     const response = await fetch(checklistForm.action, {
@@ -1219,7 +1224,12 @@ checklistForm.addEventListener('submit', async (e) => {
     });
 
     if (response.ok) {
+      checklistForm.reset();
       checklistBtn.textContent = '✓ Check your inbox';
+      checklistBtn.disabled = false;
+      if (checklistNote) {
+        checklistNote.textContent = 'Thanks — your checklist request is on the way.';
+      }
       // Trigger PDF download
       const link = document.createElement('a');
       link.href = '/files/Watusoft_M365_Security_Checklist.pdf';
@@ -1230,10 +1240,16 @@ checklistForm.addEventListener('submit', async (e) => {
     } else {
       checklistBtn.textContent = 'Error — try again';
       checklistBtn.disabled = false;
+      if (checklistNote) {
+        checklistNote.textContent = 'Submission did not go through. Please try again.';
+      }
     }
   } catch (err) {
     checklistBtn.textContent = 'Error — try again';
     checklistBtn.disabled = false;
+    if (checklistNote) {
+      checklistNote.textContent = 'Submission did not go through. Please try again.';
+    }
   }
 });
 
@@ -1242,12 +1258,16 @@ checklistForm.addEventListener('submit', async (e) => {
 // ============================================
 const consultForm = document.getElementById('consultation-form');
 const consultBtn = document.getElementById('consultation-submit');
+const consultNote = document.getElementById('consultation-form-note');
 
 consultForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const formData = new FormData(consultForm);
   consultBtn.innerHTML = 'Sending...';
   consultBtn.disabled = true;
+  if (consultNote) {
+    consultNote.textContent = 'Submitting your request...';
+  }
 
   try {
     const response = await fetch(consultForm.action, {
@@ -1257,12 +1277,25 @@ consultForm.addEventListener('submit', async (e) => {
     });
 
     if (response.ok) {
-      consultBtn.innerHTML = '✓ &nbsp; Sent — I will be in touch within one business day.';
+      consultForm.reset();
+      consultBtn.innerHTML = '✓ Request received';
+      consultBtn.disabled = false;
+      if (consultNote) {
+        consultNote.textContent = 'Thanks — your consultation request has been submitted. I will be in touch shortly.';
+      }
     } else {
       consultBtn.innerHTML = 'Error — please email info@watusoft.com';
+      consultBtn.disabled = false;
+      if (consultNote) {
+        consultNote.textContent = 'Submission did not go through. Please email info@watusoft.com instead.';
+      }
     }
   } catch (err) {
     consultBtn.innerHTML = 'Error — please email info@watusoft.com';
+    consultBtn.disabled = false;
+    if (consultNote) {
+      consultNote.textContent = 'Submission did not go through. Please email info@watusoft.com instead.';
+    }
   }
 });
 </script>
